@@ -1,0 +1,19 @@
+{
+  "name": "Router",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Whien_Liou <sal95610@gmail.com>",
+  "scripts": {
+    "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./webpack.config.js --port 3000 --content-base ./build"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.0",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.2"
+  },
+  "dependencies": {
+    "react-router-dom": "^4.0.0"
+  }
+}
