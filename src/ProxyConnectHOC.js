@@ -16,15 +16,11 @@ const ProxyConnectHOC = (WrapperComponent) => {
       super(props, context);
 
       this.store = props.store || context.store
-      this.handleUpdate = React.Component.prototype.forceUpdate.bind(this)
-    }
-
-    componentDidMount() {
-      this.store.subscribe = this.handleUpdate
+      this.store.subscribe = React.Component.prototype.forceUpdate.bind(this)
     }
 
     componentWillUnmount() {
-      this.store.unsubscribe = this.handleUpdate
+      this.store.unsubscribe = this.store.subscribe
     }
 
     render() {

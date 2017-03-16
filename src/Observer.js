@@ -1,7 +1,6 @@
 const Observer = (obj, update) => {
   let $$lastState = obj
   let $$lastSubscribe = []
-  let $$logger = []
 
   const skipUpdate = (key, value) => {
     return !isObjectShallowModified($$lastState[key], value)
@@ -33,13 +32,11 @@ const Observer = (obj, update) => {
       if (property === 'unsubscribe' && typeof value === 'function') {
         $$lastSubscribe = $$lastSubscribe.filter(subscribe => subscribe !== value)
       }
-
       if (!skipUpdate(property, value)) {
         if ($$lastSubscribe.length) {
           $$lastSubscribe.forEach(sub => sub())
         }
         $$lastState[property] = value
-        $$logger = $$logger.concat({ call: property, payload: value })
         return Reflect.set(target, property, value)
       }
 
